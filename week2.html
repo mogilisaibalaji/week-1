@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+
+    <script type="text/babel">
+   
+
+        function Products({image,item,price,discount}){
+            return(
+                 <>
+                    <h1>{item}</h1>
+                    <img src={image} width="40"/>
+                    {!discount && (
+                        <h3> price = ${price}</h3>
+                    )}
+                    {discount && 
+                        (<del> <h3> price =${price} </h3></del>
+                        
+                    )}
+                    {discount && (
+                        <h3>discount price =${discount}</h3>
+                    )}   
+                    <button>Add to Cart</button>
+                    
+                    
+                </>
+            );
+        }
+
+        function Display(){
+            return(
+                <div>
+                    <Products 
+                    image = "socks.png"
+                    item="socks" 
+                    price="15" 
+                    discount="4.5"
+                    />
+
+                    <Products
+                    image= "tennisBall.png"
+                    item="tennis ball"
+                    price="10"
+                    />
+                    <Products 
+                    image="newspaper.png"
+                    item="newspaper"
+                    price="4.5"
+                    />
+                    <Products 
+                    image= "tissue.png"
+                    item="tissue " 
+                    price="17" 
+                    />
+                </div>
+
+            );
+
+        }
+
+        const container = document.querySelector('.js-container');
+        ReactDOM.createRoot(container).render(<Display />);
+    </script>
+
+</body>
